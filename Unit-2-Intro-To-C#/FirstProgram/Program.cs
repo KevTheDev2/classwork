@@ -1,4 +1,6 @@
-﻿using System.Runtime.CompilerServices;
+﻿using System.Diagnostics.CodeAnalysis;
+using System.Dynamic;
+using System.Runtime.CompilerServices;
 
 namespace FirstProgram
 {
@@ -86,12 +88,12 @@ namespace FirstProgram
              
              */
 
-            int number1 = 0;
-            int number2 = 0;
-            int number3 = 0;
+            int number1 = 0;  // Since we will be doing math, it has to be numeric
+            int number2 = 0;  // Since we will be doing math, it has to be numeric  
+            int number3 = 0;  // Since we will be doing math, it has to be numeric  
 
             // Define a variable to hold the sum of the numbers
-            
+
             int sum = 0;
 
 
@@ -99,25 +101,51 @@ namespace FirstProgram
 
             // Ask for numbers one at a time using C# console logic
             //      which represents they keyboard and screen
-            // Console.Readline() returns a string - cannot store as an int
+            // Console.Readline() returns a string from the keyboard - cannot store as an int
             //  
-            Console.WriteLine("Please enter a number: "); // Asking for the number
-            string aLine;   // String to hold the line of input from the keyboard
-            aLine = Console.ReadLine();  // Get a line from the keyboard
+            Console.WriteLine("Please enter a number:  "); // Asking for the number*
+            string theResponse;   // Define a string to hold the line of input from the keyboard
+            theResponse = Console.ReadLine();  // Get a line from the keyboard*
             // We need an int value to store our numbers
             // Console.ReadLine() only returns a string
             // So we need to convert the string from Console.ReadLine to an int
             // int.Parse(string) will convert a string to an int
-            number1 = int.Parse(aLine);
             
+            number1 = int.Parse(theResponse);
+            
+            // Just to verify we are getting data from the keyboard
+            // Let's display it
+
+            Console.WriteLine("Please enter a number:  "); // Reuse 'theResponse' defined aboved
+            theResponse = Console.ReadLine(); 
+            number2 = int.Parse(theResponse);
+
+            Console.WriteLine("Please enter a number:  "); // Reuse 'theResponse' defined aboved
+            theResponse = Console.ReadLine();
+            number3 = int.Parse(theResponse);
+
             //**********************************************
             // Verify that I got the data I expected
             // Dsiplay some words and the value I receive
             // "string" + something is called concatenation (it sticks them together)
             //Console.WriteLine("You entered: " + number1);
-            
-            //
-            
+            // Exception = error
+
+
+
+            // 2.Add the numbers together create a sum
+            sum = number1 + number2 + number3;
+
+            // Alternate method
+            // However you code, as long as it's a correct solution
+            //      and you understand it, it's right
+            // sum = sum + number1;
+            // sum = sum + number2;
+            // sum = sum + number3;
+
+            // 3. Tell the requester the sum/total (display)
+
+            Console.WriteLine("The sum is: " + sum);
             //*********************************************
             Console.WriteLine("---Ending Program---");
         }
