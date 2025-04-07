@@ -1,4 +1,7 @@
-﻿namespace StringExamples;
+﻿using System.Diagnostics.CodeAnalysis;
+using System.Security;
+
+namespace StringExamples;
 
 class Program
 {
@@ -15,9 +18,11 @@ class Program
          *        you can't use < > to compare strings
          *        Beware: Early versions of C# do not allow use of == with strings
          *
+         *  method - a program that processes data in an object
+         *
          * C# provides several methods to operate on strings:
          *
-         *    Hey) - compare the string to left of the . to string inside () for equals
+         *   .Equals(string) - compare the string to left of the . to string inside () for equals
          *     .CompareTo(string) - return a number indicating how the first string relates to the second
          *                          return a negative number if first string is less than the second
          *                          return a zero if first string is equal the second
@@ -59,5 +64,50 @@ class Program
         {
             Console.WriteLine("string1 is NOT equal string2");
         }
+        //Some methods that process strings
+        // To see a list of all familiar methods available to an object - just type objectName
+        // .Length - returns the number of characters in a string
+        // .Contains(string) - returns true if the string given is inside a string
+        // .Substring(start-index, length) - extract characters from the string starting at
+        //                                  the start index for the numbers characters indicated by the length
+        //                                  start-index starts at 0 and not 1
+        //                                  whenever you see the word index - start counting at 0
+        //                                  when you see position - starts counting at 1
+        //  .StartsWith(string) - returns true if the string starts with the specified characters (case-sensitive)
+        //  .EndWith(string) - returns true if the string starts with the specified characters (case-sensitive)
+        //  .Trim() - remove any leading and trailing spaces
+        // IN STRINGS SPACES MATTER FOR INDEX REASONS
+        //string1.
+        //                  012345678911234567892123456789312345678941234567
+
+        string sentence = "    My name is Frank and I attempt to teach C#    ";
+        Console.WriteLine("There are " + sentence.Length + " characters in the sentence");
+
+        bool containsFrank = sentence.Contains("Frank"); // true if sentense contains Frank
+        Console.WriteLine("Does sentence contain Frank: " + containsFrank);
+
+        Console.WriteLine("Does sentence contain Marquise " + sentence.Contains("Marquise"));
+
+        string nameInSentence = sentence.Substring(15, 5); //Extracts 5 characters starting at position 15
+        Console.WriteLine("Name is: " + nameInSentence);
+
+        Console.WriteLine("Does sentence start with My? " + sentence.StartsWith("My"));
+        Console.WriteLine("Does sentence start with My? " + sentence.StartsWith("my"));
+        Console.WriteLine("Does sentence start with My? " + sentence.StartsWith("C#"));
+
+        Console.WriteLine("Results when sentence.Trim() is used to remove leading and trailing spaces");
+        Console.WriteLine("Does sentence start with My? " + sentence.Trim().StartsWith("My"));
+        Console.WriteLine("Does sentence start with My? " + sentence.Trim().StartsWith("my"));
+        Console.WriteLine("Does sentence start with My? " + sentence.Trim().StartsWith("C#"));
+
+        // When C# sees a statement with.chained operations (operations separated by .)
+        // C# Processes the statement from left to right, one operation at a time
+        // Uses the result of the operation in the next one
+        //
+        // setnence.Trim().EndsWith(C#)
+        //
+        // 1. Sentence.Trim() - retuens a string with the leading and trailing spaces removed
+        // 2. result-from-step-1.EndsWith() - return true or false depending on if string actually ends with characters
+
     } // End of Main()
 }  // End of class Program
