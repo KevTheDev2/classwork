@@ -11,6 +11,9 @@ class Program
         int number1 = 0; // Since we will be doing math it needs to be numeric
         int number2 = 0; // Since we will be doing math it needs to be numeric
         int number3 = 0; // Since we will be doing math it needs to be numeric
+        int number4 = 0; // Since we will be doing math it needs to be numeric
+        int number5 = 0; // Since we will be doing math it needs to be numeric
+        int number6 = 0; // Since we will be doing math it needs to be numeric
 
         // Define a variable to hold the sum of the numbers
         int sum = 0;
