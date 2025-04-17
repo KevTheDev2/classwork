@@ -70,18 +70,45 @@ namespace Day_2_Dictionary_Example
                 Console.WriteLine(exceptionInfo.Message);
             }
 
-            // If you want to walkthrough teh entire Dictionary with a foreach
+            // If you want to walkthrough the entire Dictionary with a foreach
             //    You need to get all the keys in the Dictionary
             //
             // use the KeyValuePair object in the foreach
             //
             // KeyValuePair<key-type, value-type> name-for-dictionary-entry
+            //
+            // KeyValuePair returns the key and associated value from the Dictionary
+            //
+            // .Key - access the key
+            // .Value - access the value
 
+            // get each key/value pair and store in it a variable called  an Entry
             foreach (KeyValuePair<string, int> anEntry in personInfo)
             {
                 Console.WriteLine(anEntry.Key + " lives in zip code " + anEntry.Value);
             }
-                 
+                
+            
+            // Ask the user for a name and grade
+            // Store them in a dictionary
+
+            // Dictionary to hold name (key) and grade (value)
+            //          Key     value   name
+            Dictionary<string, double> gradeBook = new Dictionary<string, double>();
+
+            // lets add three students -  loop three times
+            for (int i = 0; i < 3; i++)
+
+            // Ask the user for the name
+            Console.Write("Enter student name");
+            string studentName = Console.ReadLine(); // Get student name// Ask the user for the student name
+            Console.Write("Enter grade: ");
+            double grade = Double.Parse(Console.ReadLine()); // Get student grade
+
+            // Add data to the dictionary
+            // Dictionary{key}      = value
+            gradeBook[studentName] = grade; // gradeBook.Add(steudentName, grade)
+
             Console.WriteLine("Please press enter to end program...");
             Console.Read();
         }
