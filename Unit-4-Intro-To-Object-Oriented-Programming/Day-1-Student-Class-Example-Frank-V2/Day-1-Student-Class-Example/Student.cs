@@ -15,6 +15,10 @@
 //     the methods that manipulate the class data (behaviors of the object)
 //
 //  class can do whatever a programmer decides it should or shouldn't do
+// public is used so anyone can instatiate objects of the class
+//
+// This class is gong to represent a student 
+
 public class Student
 {
     // Define the data for our class
@@ -29,14 +33,14 @@ public class Student
     // Note: The data is defined without an initial value
     //       Class data should be initialized in constructors
     private string    studentName;
-    private List<int> testScores;
-    
+    private List<double> testScores;
+
     // Define methods for the class
-    
+
     // One special methods for a class is called a constructor
     // A constructor is responible for initializingthe data in a class
     // (data should never be uninitialized - the starting value needs to be known)
-    
+
     // a constructor method is special because:
     //
     //   1. it has no return type; not even void
@@ -44,26 +48,98 @@ public class Student
     //   3. it may or may not receive parameters (initializers)
     //      ( a constructor with no parameters is called a default constructor)
     //   4. Usually public 
-    
+
     // Define a constructor to initialize our data with values 
     //          specified by the user
 
-    public Student(string name, List<int> scores)
+    // As the class designer you decide what you need to properly initialize objects of the class
+    // You decide how contructors you need pr how users of the class initialize your objects
+    //
+    // Do we want to allow an object with default values? 
+    //          Does it make sense to have a defaut student name and default score? 
+    //               No - Don't code a default ctor initialize with default values
+    //               Yes - Code a 0-arg ctor to assign default values : public Student
+    // Do we want to allow storing the student name with scores?
+    //      Yes - Code a 1-arg ctor that takes the name and assigns it studentName
+    //                                          and assigns an empty list to testScores
+    // Do we want to store the test scores with out a name?
+    //    No - Don't code a 1-arg ctor to accept a name only the scores: public Student (List<int> scores)
+    
+    /*********************************************************************************
+     *  Methods to manipulate the class
+     ********************************************************************************/
+    public Student(string theName)
+    {
+        studentName = theName;// assign the name passed to the ctor to our studentName
+        testScores = new List<double>(); // Define and assign and empty List to testScores
+    }
+    public Student(string name, List<double> scores) // 2-argument contructor
+                                                  // - two parameters used to initialize an object
     {
         studentName = name;  // Set the class data to the data passed in from the user
         testScores = scores; // Set the class data to the data passed in from the user
     }
-    
+
+    /*********************************************************************************
+     *  M
+     ********************************************************************************/
+
     // Provide a method to display our data
     // (Console.WriteLine() doesn't know how to do it)
+
+    // We need a method to allow the user to add scores to our testScores List
+    // Every method requires a method and signature body
+    // Method signature:    access      return
+    //                      type        type        MethodName(parameters)
+    // Method body: inside {} following method signature
+
+    public void AddScore(double score) // Accept a score and return nothing
+    {
+        testScores.Add(score);
+    }
+
+    // allow user to get the sum of the scores
+    // We need a method to add up the scores then return the sum
+
+    // Provide method
+    public double SumOfScores() // No args needed as we have access to all the data in the class
+    {
+
+        // Define a variable to hold what we are returning
+        double sum = 0;
+
+
+        // two ways
+        //   1. Use a for loop
+        //   2. See if there is a method for List that do the sum for us
+        //          (There seems to be a method, but it looks complicates)
+
+        // We will use a foreach loop
+        foreach (double scores in testScores)
+        {
+            sum = sum + scores;
+        }
+
+        // return the variable the result
+
+        return sum;
+    }
+
+    // Method Compute average score for user
+
+    public double AvgOfScores()
+    {
+        return SumOfScores() / testScores.Count; // using a class method inside another class method
+    }
+
     public void ShowStudent()
     {
-        Console.WriteLine("Name: " + studentName);
+        Console.WriteLine("\nName: " + studentName);
         Console.WriteLine("Scores: ");
 
-        foreach (int score in testScores)
+        foreach (double score in testScores)
         {
-            Console.WriteLine(score);
+            Console.Write(score + " ");  // Dispay on same line
         }
     }
     

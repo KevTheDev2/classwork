@@ -22,30 +22,60 @@ class Program
     
     // We need to be sure have all the data we want to store in our object
     // Before we instantiate the object
-    List<int> scores = new List<int>();
+    List<double> scores = new List<double>();
     scores.Add(100);
     scores.Add(90);
     scores.Add(80);
     
-    List<int> scores2 = new List<int>();
-    scores.Add(100);
-    scores.Add(100);
-    scores.Add(100);
+    List<double> scores2 = new List<double>();
+    scores2.Add(100);
+    scores2.Add(100);
+    scores2.Add(100);
 
     // Instantiate a Student using the data we want to store in the Student object
-    Student aStudent = new Student("Frank", scores);
-    Student aStudent2 = new Student("Marquise", scores2);
-    
-    // Display the Student object we created
-    // Console.WriteLine() does not now how to display an object of our class
-    Console.WriteLine("aStudent: " + aStudent);
+    // ClassName objName = new class(initial name-name, initial scores
+
+    Student aStudent = new Student("Frank", scores); // calling the 2 arg that takes a name
+
+    Student aStudent2 = new Student("Marquise", scores2); //
+
+
+        // Display the Student object we created
+        // Console.WriteLine() does not now how to display an object of our class
+        Console.WriteLine("aStudent: " + aStudent);
     
     // Use the Student class method to display Student class object
     //
     // object.method() <--- object oriented notations
     aStudent.ShowStudent();
+
+    Console.WriteLine($"The sum of scores: {aStudent.SumOfScores()}");
+    Console.WriteLine($"The average of scores: {aStudent.AvgOfScores()}");
+
+
     aStudent2.ShowStudent();
-    
-    //Console.WriteLine(aStudent.studentName);
+
+    Console.WriteLine($"The sum of scores: {aStudent2.SumOfScores()}");
+    Console.WriteLine($"The average of scores: {aStudent2.AvgOfScores()}");
+
+        // Define a student with no scores
+        Student johnTheStudent = new Student("John");
+        johnTheStudent.ShowStudent();
+        // Add some scores to johnTheStudent
+
+        johnTheStudent.AddScore(86);
+        johnTheStudent.AddScore(90.5);
+        johnTheStudent.AddScore(20);
+        johnTheStudent.AddScore(67.6);
+        johnTheStudent.AddScore(99);
+        johnTheStudent.AddScore(100);
+
+        johnTheStudent.ShowStudent(); // Display the data in the Student Object
+        johnTheStudent.AddScore(90.7);
+        johnTheStudent.AddScore(92.3);
+
+        Console.WriteLine($"The sum of scores: {johnTheStudent.SumOfScores()}"); // 
+        Console.WriteLine($"The average of scores: {johnTheStudent.AvgOfScores()}");
+        //Console.WriteLine(aStudent.studentName);
     }
 }
