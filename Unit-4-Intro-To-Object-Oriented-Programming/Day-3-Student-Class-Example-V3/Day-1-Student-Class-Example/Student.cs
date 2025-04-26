@@ -1,4 +1,6 @@
-﻿namespace Day_1_Student_Class_Example;
+﻿using System.Reflection.Metadata.Ecma335;
+
+namespace Day_1_Student_Class_Example;
 
 // internal attribute was removed so we can use the class anywhere
 
@@ -72,6 +74,7 @@ public class Student
 /********************************************************************************************
  * Constructors - Allow user to create object and initialize them
  *******************************************************************************************/
+
     public Student(string theName)  // 1-arg ctor to accept a name only
     {
         studentName = theName;            // Assign the name passed to the ctor to our studentName
@@ -83,12 +86,48 @@ public class Student
     {
         studentName = name;   // Set the class data to the data passed in from the user
         testScores  = scores; // Set the class data to the data passed in from the user
+
     }
-    
+    /********************************************************************************************
+    * Getters and Setter to allow access to our private data
+    * 
+    * Getters and setters are special methods to allow a class controlled access to the data
+    * 
+    * Getters - returns the value in our data members
+    * Setters = allow the changing of data members
+    * 
+    * By convention: Getters are named GetVariableName
+    *                Setters are called SetVariableName
+    * Most IDEs will generate Getters and Setters for you for any data already defined in the class
+    *******************************************************************************************/
+
+    public string GetStudentName()
+    {
+        return studentName; // return the value in this private data member
+    }
+
+    public List<double> GetTestScores()
+    {
+        return testScores; // return the value in this private data member
+    }
+
+    public void SetStudentName(string newName)
+    {
+        studentName = newName;
+    }
+
+    public void SetTestScores(List<double> newScores)
+    {
+        testScores = newScores;
+    }
     /********************************************************************************************
      * Methods to manipulate the class
      *******************************************************************************************/
+
+    // We need to provide a ToString() method to return a string representation of the class data
     
+
+
     // We need a method to allow the user to add scores to our testScores List
     // Every method requires a method signature and a body
     // Method signature:   access  return
@@ -124,7 +163,8 @@ public class Student
     // Method compute average score for user
     public double AvgOfScores()
     {
-        return SumOfScores() / testScores.Count; // Using a class method inside another class method
+        // To round a double value to decimal places, use Math.Round(value, 3-decimal-places)
+        return Math.Round(SumOfScores() / testScores.Count, 2); // Using a class method inside another class method
     }
     
     

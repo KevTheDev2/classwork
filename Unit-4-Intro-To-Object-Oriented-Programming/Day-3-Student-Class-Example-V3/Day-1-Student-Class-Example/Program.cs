@@ -48,6 +48,22 @@ class Program
     // Display the Student object we created
     // Console.WriteLine() does not now how to display an object of our class
     Console.WriteLine("aStudent: " + aStudent);
+        // COnsole.WriteLine() displays strings on a screen
+        // It expects everything you ask it to display a string
+        // If given anon string value, it tries to convert it to a string
+        // The way it tires to convert to a string:
+        //      1. Looks at the datatype of what you are trying to display
+        //      2. It determines if there is a method availible to convert the
+        //              datatype to a string
+        //           primative types (int,doublr, bool, ect) all have methods to 
+        //           objects to strings
+        //
+        //          objects must have a method defined in their class to
+        //          return a string of it's data
+        //          The method is looks for is called ToString()
+        //
+        //          if a class doesn't have a ToString() method
+        //              C# trturns the Namespace.ClassName for any object of the class
     
     // Use the Student class method to display Student class object
     //
@@ -75,6 +91,20 @@ class Program
     Console.WriteLine($"\nThe sum of scores: {johnTheStudent.SumOfScores()}");
     Console.WriteLine($"\nThe avg of scores: {johnTheStudent.AvgOfScores()}");
 
-    //Console.WriteLine(aStudent.studentName);
+    // I want to see just the name of the student
+    // Use have to a getter (if it exists) 
+
+
+    Console.WriteLine($"aStudent object has the name {aStudent.GetStudentName()}");
+    Console.WriteLine($"aStudent object has the name {aStudent2.GetStudentName()}");
+
+        // Change the name of a student
+        aStudent.SetStudentName("Pete");
+        aStudent.ShowStudent();
+
+        List<double> newScores = new List<double>();
+        newScores.Add(0);
+        aStudent.SetTestScores(newScores);
+        aStudent.ShowStudent();
     }
 }
