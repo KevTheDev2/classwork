@@ -44,10 +44,11 @@ class Program
 //  ClassName objName = new ClassName(initial-name, initial-scores)    
     Student aStudent  = new Student("Frank", scores);     // Calling the 2-arg ctor that takes a name and scores
     Student aStudent2 = new Student("Marquise", scores2); // Calling the 2-arg ctor that takes a name and scores
-    
+        
     // Display the Student object we created
     // Console.WriteLine() does not now how to display an object of our class
     Console.WriteLine("aStudent: " + aStudent);
+<<<<<<< HEAD
         // COnsole.WriteLine() displays strings on a screen
         // It expects everything you ask it to display a string
         // If given anon string value, it tries to convert it to a string
@@ -64,6 +65,31 @@ class Program
         //
         //          if a class doesn't have a ToString() method
         //              C# trturns the Namespace.ClassName for any object of the class
+=======
+    // Console.WriteLine() displays strings on the screen
+    // It expects everything you ask it to display to be a string
+    // If given a non-string value, it trys to convert it to a string
+    // The way it trys to convert to a string:
+    //
+    //   1. Looks at the datatype of what you are trying to display
+    //   2. It determines if there is a method available to convert the
+    //         data type to a string
+    //
+    //      primitive types (int, double, bool etc) al have methods to
+    //      convert them to strings
+    //
+    //      objects must have a method defined in their class to
+    //              return a string version of its data
+    //
+    //      the method it looks for is called ToString()
+    //
+    //      if a class does not have a ToString() method
+    //         C# returns Namespace.ClassName for any object of the class
+    
+    
+    
+    
+>>>>>>> 2ae559e5d2cbf4b955092e4af9898e817eb42660
     
     // Use the Student class method to display Student class object
     //
@@ -90,7 +116,11 @@ class Program
     
     Console.WriteLine($"\nThe sum of scores: {johnTheStudent.SumOfScores()}");
     Console.WriteLine($"\nThe avg of scores: {johnTheStudent.AvgOfScores()}");
+    
+    // I want see just the name of a Student
+    // Use have to a getter (if it exists) to access the data
 
+<<<<<<< HEAD
     // I want to see just the name of the student
     // Use have to a getter (if it exists) 
 
@@ -106,5 +136,18 @@ class Program
         newScores.Add(0);
         aStudent.SetTestScores(newScores);
         aStudent.ShowStudent();
+=======
+    Console.WriteLine($"aStudent object has the name {aStudent.GetStudentName()}");
+    Console.WriteLine($"aStudent2 object has the name {aStudent2.GetStudentName()}");
+    
+    // Change the name of aStudent
+    aStudent.SetStudentName("Pete");
+    aStudent.ShowStudent();
+
+    List<double> newScores = new List<double>();
+    newScores.Add(0);
+    aStudent.SetTestScores(newScores);
+    aStudent.ShowStudent();
+>>>>>>> 2ae559e5d2cbf4b955092e4af9898e817eb42660
     }
 }
