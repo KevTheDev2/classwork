@@ -1,5 +1,11 @@
-﻿namespace Playing_Card_Poker_Game;
+﻿//namespace Playing_Card_Poker_Game;
+package CardDeck;
 
+import PlayingCard.PlayingCard;
+
+import java.util.List;
+
+Import PlayingCard.PlayingCard
 public class CardDeck
 {
     /*************************************************************************************************
