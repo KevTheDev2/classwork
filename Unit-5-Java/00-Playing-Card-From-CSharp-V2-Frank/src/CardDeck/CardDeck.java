@@ -18,7 +18,7 @@ public class CardDeck
 	 ***************************************************************************************************/
 
 	List<PlayingCard> deckOfCards = new ArrayList<PlayingCard>();  // Define a ArrayList to hold PlayingCards
-
+	//Set<PlayingCard> deckOfCards = new LinkedHashSet<>(); // Duplicates can't be added to the deck
 	/***************************************************************************************************
 	 * Number of non-Joker cards per suit
 	 ***************************************************************************************************/

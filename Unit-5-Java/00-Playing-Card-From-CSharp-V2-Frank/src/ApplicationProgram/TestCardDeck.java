@@ -3,10 +3,7 @@ package ApplicationProgram;
 import CardDeck.CardDeck;
 import PlayingCard.PlayingCard;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 public class TestCardDeck {
 //
@@ -77,6 +74,51 @@ public class TestCardDeck {
         for(PlayingCard discardPileCard : discardPile) {
             System.out.println(discardPileCard);
         }
+        /*
 
+
+
+
+
+         */
+
+
+
+        System.out.println("\n--- Demo ArrayList vs. Set ---");
+
+// Define an ArrayList
+        List<String> names = new ArrayList<>();
+
+        names.add("Frank");
+        names.add("Aaron");
+        names.add("Jay");
+        names.add("frank");
+
+        // Add a duplicate name
+        names.add("Frank");
+
+        System.out.println("\n--- Here's the ArrayList ---");
+        for (String aName : names){
+            System.out.println(aName);
+        };
+        // Define a Set class object as a HashSet
+        //
+        System.out.println("\n--- Here is the Set ---");
+
+// Define a Set
+        Set<String> nameSet = new LinkedHashSet<>();
+
+        nameSet.add("frank");
+        nameSet.add("Frank");
+        nameSet.add("Jay");
+        nameSet.add("Aaron");
+        // Add a dulicate name
+        nameSet.add("Frank");
+
+        System.out.println("\n--- Here's the Set after adding duplicate name ---");
+        System.out.println("\n--- Duplicate WAS NOT stored ---");
+        for (String aName : names){
+            System.out.println(aName);
+        }
     } // End of main() method
 } // End of TestPlayingCard CLass
