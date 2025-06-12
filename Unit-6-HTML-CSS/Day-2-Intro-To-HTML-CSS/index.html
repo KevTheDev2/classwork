@@ -21,8 +21,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!-- the title element is probably the only thing you change in the <head>        -->
         <title>Frank's Page</title> <!-- what is displayed on the browser tab for the page-->
-    
-        <!-- Connect this html to the CSS file that has it's styling  -->
+        <!-- Connect this Html to the CSS file that has it's styling -->   
+        <!-- <link> this html to an external file (a File outside the html folder)  -->
+        <!-- rel="" indicates the type of filing you're connecting to-->
+         <!-- href="" indicates the type of file is relative to the project's folder -->
+
          <link rel="stylesheet" href="myStyles.css"/>
 
     </head>
@@ -34,21 +37,85 @@
             <h2>January - 2025</h2>
             
         </header>
-        <nav> <!-- the nav> section contains navigation links for the page   -->
-            <!-- No nav stuff yet -->
+        <nav> 
+            <a href="contactInfor.html"> Enter Contact Info</a>
+
         </nav>
         <main> <!-- convey the main content of pages-->
             <div> <!-- allows organization of information on the page - optional -->
+                <!-- Starts a new line in page- space before the div-->
                   <!-- AND creates a stylable unit within the page     -->
                 <!-- <p> - Paragraph tag - puts content on a separate line - instead wrapping the text    -->
+                    <!-- class="" allows a group of elements to share common characteristics-->
                 <p>This is a web page created for class</p>
-                <p>It's not much</p> 
-                <p>but it's a start!</p>
+                <!-- id"" attributes assigns it's  name to an element for styling et al"-->
+                <p id="p2">It's not much</p>
+
+                <p class = "normal">but it's a start!</p>
             </div>
+            <section> <!-- optional major topic area of the main content / another stylable unit -->
+                <div id="Youssef">
+                <p>This is a paragraph in a section</p>
+            </div>
+            </section>
+            <section id="studentList">
+                <p> Some of the people in my class</p>
+                <!-- <ol> creates an ordered namelist of contents-->
+                <!-- <li> goes inside the <ol> elelment to define each item in the list-->
+                        <ol id="theStudents">
+                           <li>Kevin</li>     
+                           <li> Missy</li>
+                           <li>Amber</li>
+                           <li>Preshous</li>
+                           <li>Kiana</li>
+
+                        </ol>
+                        <!-- Have the browser create a table of our data-->
+                         <table>    <!-- Mark the start of a html table-->
+                                    <!-- one <tr> element for each row in the table -->
+                                    <!-- one either <td> or <th> for each column in the table -->
+                                    <!-- <td> used for colmn content -->
+                                    <!-- <th> used for column header-->
+                                        <tr>
+                                            <th>Heading 1</th> !<!-- Column heading-->
+                                            <th>Heading 1</th> !<!-- Column heading-->
+                                            <th>Heading 1</th> !<!-- Column heading-->
+                                            <th>Heading 1</th> !<!-- Column heading-->
+                                            
+                                            
+
+
+
+
+                                        </tr>
+                                        <tr> <!-- define a row in a table-->
+                                            <td>Cell 1 </td> <!-- a column of data-->
+                                            <td>Cell 2 </td> <!-- a column of data-->
+                                            <td>Cell 3 </td> <!-- a column of data-->
+                                            <td>Cell 4 </td> <!-- a column of data-->
+
+                                        </tr>
+                                        <tr> <!-- define a row in a table-->
+                                            <td>Cell 5 </td> <!-- a column of data-->
+                                            <td>Cell 6 </td> <!-- a column of data-->
+                                            <td>Cell 7 </td> <!-- a column of data-->
+                                            <td>Cell 8 </td> <!-- a column of data-->
+
+                                        </tr>
+                                        <tr> <!-- define a row in a table-->
+                                            <td>Cell 9 </td> <!-- a column of data-->
+                                            <td>Cell 10 </td> <!-- a column of data-->
+                                            <td>Cell 11 </td> <!-- a column of data-->
+                                            <td>Cell 12 </td> <!-- a column of data-->
+
+                                        </tr>
+
+                         </table>
+            </section>
+
+
         </main>
-        <section> <!-- optional major topic area of the main content / another stylable unit -->
-            <p>This is a paragraph in a section</p>
-        </section>
+       
         <footer> <!-- Stuff you want on the bottom of the page -->
             Copyright 2025 - Bootcamps R Us, LLC
         </footer>

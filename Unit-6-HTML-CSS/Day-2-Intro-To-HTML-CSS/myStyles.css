@@ -5,8 +5,86 @@
                                   css rule;
                                 }
 */  
-/* for now we use html tags as selectors */
+
+
+/* Selectors are : html tag name - all elements defined with this tag
+# - id="" elements with the same id="" - used for a specific element
+. - class"" elements with the class="" - for a specific group of elements     
+*/
 
 html { /* style all the elements within the html tag */
     background-color: lightgoldenrodyellow;
+    font-size: 20px;
+    
+}
+    
+h2 { /* style all the h2 ;*/
+    
+    color:green  
+  }
+
+    
+    footer {/* style all the stuff in the footer*/
+    
+    color: red; /*makes the text red*/
+    text-align:  center;
+    font-size: 12px;  
+    margin-top: 50px; /*makes the size different*/
+  }
+
+p{ /*style all the paragraps this way*/
+  color: rgb(128, 115, 0);
+font-size: 12pt;
+}
+
+#p2 { /* syles all elements with id="p2" */
+
+color: chocolate;
+}
+
+div { /*style all the divs and everything in them*/
+
+  background-color: rgba(0, 174, 255, 0.295);
+}
+
+#Youssef { /* Style all elements with the id="Youssef"*/
+
+  background-color: blue;
+}
+
+.normal { /*style all elements with class="normal" */
+
+background-color: aquamarine;
+}
+
+
+/* style to <ol> of students in class*/
+/* #stedentList to reference it's id*/
+/* ol to specify all <ol> tags - this would all <ol> tags, not just what you want*/
+ol {
+
+color: cornflowerblue; /* Set the text border */
+font-style: italic; /* Set the style */
+list-style: square; /* set what is used as a bullet for the list */
+border-style: ridge; /* Put a border around the element */
+border-color: black; /* set the color of the border*
+border-width: 5px; /* set the width of the border*/
+border-radius: 10px; /* set rounded corners */
+}
+
+table /* Stye all tables in the HTML */
+
+{
+border: 2px solid black; /* set the boarder width type color */
+
+
+}
+
+td /* Style all <td> in the HTML */
+{
+border: 1px dashed red;
+width: 100px;
+height: 100px;
+text-align: center;
+
 }

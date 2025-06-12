@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<!-- This page will collect contact information for a perosn -->
+<!-- and send it to an extrenal API to be stored             --> 
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Info</title>
+</head>
+<body>
+    <header>
+        <hi>Contact Information Form</hi>
+        <h3>Please enter your information and click</h3>
+    </header>
+    <main>  <!-- Contains the primary content of the page-->
+            <!-- We use this HTML form o to interacte with a used-->
+            <!-- The form can send the data to an API or Javascript program
+             - API stands for Application Programm Interface
+             - an API is a method on a different comoutperor process
+             - Typically data is sent to an API usin g an HTTP request
+             - An HTTP request is we ask a se a server to do something
+             - A server is another computer or process
+            -->
+
+
+            <!-- Method="" type of HTTP request to issue when submit is clicked
+             method="POST" is the most common to send the forms data via HTTP POST
+             actions="" contains API URL to recieve the data
+             -->
+            <form method="POST" action="https://6848583cec44b9f349409f8e.mockapi.io/DataFromClass">
+            <!-- Input tag components interact with the user
+                and are usually inside thir own <div> -->
+            
+                            
+            <!-- the input tag has several attributes: 
+            type=""- the type of input you want from your user-->   
+            <!-- id"" - name used to identfy the input field in in thr html-->  
+             <!-- name="" - name the variable to hold the user input from the form -->     
+              <!--                      the name must match what the API expects the field to be called-->    
+                                    <!-- the <label> tag provides information/promt to the user on what to enter--> 
+                                        <!-- label has one attribute: for="id-of-the-associated-"-->                    
+            </form>
+    </main>
+    
+</body>
+</html>
