@@ -4,14 +4,37 @@
 
 // Single line comment
 
+/************************************************************** 
+We test the JavaScript code using in speact in the browser
+***************************************************************/
+
 /**
  * Functions start with the word function.
  * They don't have a return type and the naming convention is camel-case.
  */
 function variables() {
   // Declares a variable where the value cannot be changed
+  const aVariable = 42;
+
+
+// console.log() - displays data on the console (Console.WriteLine() or System.out.println())
+// JavaScript supports interpolation to sonstruct string similar to C#
+
+// interpolation: `words ${variable} ` C#: $(words {aVaraible})
+  console.log(`The value in aVariable is : ${aVariable}`)
+
+  // Declare a variable whosw value can be changed
+  let itBe = 1970;
+  console.log(`The value in itBe is : ${itBe}`)
   // Declares a variable those value can be changed
+  
   // Declares a variable that will always be an array
+  let stuff = ["things","Kevin","Hello", 774.6] 
+  console.log(`The value in stuff is : ${stuff}`)  
+  console.log(stuff) // Display the array as a variable - elements separated by comma
+  //console.table(stuff) // display the array as a nice neat table with rows and columns
+
+
 }
 
 /**

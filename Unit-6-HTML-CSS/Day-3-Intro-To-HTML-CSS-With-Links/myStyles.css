@@ -1,5 +1,5 @@
 /* This is a comment in CSS            */
-/* CSS defines formatting for the page */
+/* CSS defines formatting for the Home page (index.html */
 /* The general format: selector {
                                   css rule;
                                   css rule;
@@ -75,3 +75,5 @@ div {  /* style all the divs and everything in them */
     color: green;
     border: 1px solid green;
   }
+
+

@@ -6,12 +6,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Info</title>
+
+    <!-- Connecting the HTML to it's stylesheet-->
+    <link rel="stylesheet" href="contactInfo.css"/>
 </head>
 <body>
     <header>
         <h1>Contact Information Form</h1>
         <h3>Please enter your information and click submit</h3>
     </header>
+    <nav> <!-- Optional -->
+        <!-- Anchor tag <a> provides links to other resources-->
+            <!-- href="where-you-want-to-go"-->
+        <a href="index.html">I'm done here.</a>
+
+    </nav>
     <main> <!-- contains the primary content of the page                    -->
            <!-- We use and HTML form to interact with a used                -->
            <!-- The form can send the data to an API or JavaScript program  --> 
@@ -40,7 +49,33 @@
             <div> <!-- Ask for for the person's name -->     
                 <label for="nameField">Enter your full name: </label>
                 <input type="text" id="nameField" name="personsName"/>
-            </div>    
+            </div>   
+
+             <div> <!-- Ask for for the person's city where they live -->     
+                <label for="cityField">Enter the city where you reside: </label>
+                <input type="text" id="cityField" name="currentCity"/>
+            </div>  
+
+            <div> <!-- Ask for for the person's favorite number using a number picker -->     
+                <label for="favNumField">Please choose you're favorite number: </label>
+                <input type="number" id="faveNumField" name="favoriteNumber"/>
+            </div>  
+
+            <div> <!-- Ask for for the person's favorite color using a color -->     
+                <label for="favColorField">Enter the city where you reside: </label>
+                <input type="color" id="favColorField" name="favoriteColor"/>
+            </div>  
+
+            <div> <!-- Ask for for the person's next birthday using a date picker -->     
+                <label for="nextBdayField">Enter the city where you reside: </label>
+                <input type="date" id="BdayField" name="nextBirthday"/>
+            </div>  
+
+            
+
+            <!-- Define a submit buttorn for the form -->
+            <!-- We need the submit buttonto send the from data to API or Javascript -->
+            <input type="Submit value= Submit if done "/>
            </form>
 
     </main>
