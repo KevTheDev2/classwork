@@ -30,6 +30,7 @@ function variables() {
   itBe = 1776;
   console.log(`The value in itBe is: ${itBe}`)
 
+
   // Declares a variable that will always be an array
   let stuff = ["things", 'Kevin', "Hello", 774.6]
   console.log(`The value in stuff is: ${stuff}`) // Display teh array as a variable - elements separated by ,
@@ -38,6 +39,16 @@ function variables() {
 
 }
 
+function varTest(){
+  // variables defined in a block are usually only availible inside the block or block within it
+let num = 10; // NOT availible outside of this block
+var someVariable = 10; // var defines is known outside of the block it is defined within
+
+}
+//let someVariable = 999; // Causes an error due to redefining a var varible
+console.log(`SomeVariable contains: ${someVariable}`)
+console.log('num contains: ${num}') // ERROR! Becasue num is defined outside 
+                                    // the block this statement is closed in
 /**
  * Functions can also accept parameters.
  * Notice the parameters do not have types.
@@ -51,27 +62,28 @@ function printParameters(param1, param2) {
 
 /**
  * Compares two values x and y.
- * == is loose equality
- * === is strict equality
+ * == is loose equality - values are the same, but the types don't matter
+ * === is strict equality - values AND the types must be the same
  * @param {Object} x
  * @param {Object} y
  */
 function equality(x, y) {
-  console.log(`x is ${typeof x}`);
-  console.log(`y is ${typeof y}`);
+  console.log(`x is ${typeof x}`); // typeoff will return the data type of the variable
+  console.log(`y is ${typeof y}`); 
 
-  console.log(`x == y : ${x == y}`); // true
-  console.log(`x === y : ${x === y}`); // false
+  console.log(`x == y : ${x == y}`); 
+  console.log(`x === y : ${x === y}`); 
 }
 
 /**
  * Each value is inherently truthy or falsy.
+ * Every value used in a conditional statement will be TRUE or FALSE
  * false, 0, '', null, undefined, and NaN are always falsy
- * everything else is always truthy
+ * everything else is always truthy (true)
  * @param {Object} x The object to check for truthy or falsy,
  */
 function falsy(x) {
-  if (x) {
+  if (x) { // USe the parameter in a conditional statement
     console.log(`${x} is truthy`);
   } else {
     console.log(`${x} is falsy`);
@@ -79,46 +91,76 @@ function falsy(x) {
 }
 
 /**
- *  Objects are simple key-value pairs
+ *  JavaScript Objects are NOT the same as Object-oriented Objects
+ * 
+ *  Objects are simple key-value pairs - way to structure data
     - values can be primitive data types
     - values can be arrays
     - or they can be functions
+    
+    JSON - JavaScript Object Notation - How we share data between devices
 */
 function objects() {
-  const person = {
-    firstName: "James T.",
-    lastName: "Kirk",
-    age: 42,
-    employees: [
-      "Spock",
+  const person = {            // JavaScript objects are enclosed in {}
+    firstName: "James T.",    // attributes are specified with the name : value
+    lastName: "Kirk",         // multiple values separated by commas
+    age: 42,                  // Numbers are coded as a human, non-numbers are inside "" or ''
+    employees: [              // Arrays are enclosed in brackets []
+      "Spock",                // elelments in array are separated by commas
       "McCoy",
       "Uhura",
       "Scotty"
     ]
   };
 
-  // Log the object
+  // Log the object - display the object
+  console.log(person); // This will display the data in a pretty easy to read format
+  console.log(`person contains: ${person}`)// This doesn't display the data
+  console.table(person) // formatted display
 
-  // Log the first and last name
+  // Log the first and last name - accessing attributes in an object : objectName.attributesName
+console.log(`Person's first name: ${person.firstName}`) 
+console.log(`          last name: ${person.lastName}`) 
 
-  // Log each employee
+printPerson(formatPerson(person)) // call print person function to display a sentense about the data
+printParameters(person, null)
+
+
+
+  // Log each employee - iterate/go through an object array of objects
+
+  // Just like in C# and Java we use a for loop to go through an array
+  for (let i = 0; i < person.employees.length; i++)
+  { 
+    console.log(`Employess #${i+1}: ${person.employee[i]}`)
+  }
 }
-
+ function printPerson(somePerson) {
+  return `First Name: ${somePerson.firstname} is ${somePerson.age} years old and 
+  their last name is Last:${somePerson.lastName}`
+ }
 /*
 ########################
 Function Overloading
 ########################
+
+In C# and Java, function overloading is when functions have the same name, but different parameters
+and the compiler determines which function to call based on the type of parameters
+
+In C# and Jav, function overloading are used for multiple constructors of a class
+
 
 Function Overloading is not available in Javascript. If you declare a
 function with the same name, more than one time in a script file, the
 earlier ones are overridden and the most recent one will be used.
 */
 
-function Add(num1, num2) {
+function Add(num1, num2) { // This function is overridden by the one defined below
+                           // It will never be called
   return num1 + num2;
 }
 
-function Add(num1, num2, num3) {
+function Add(num1, num2, num3) { // This function overrides any previously defined with the same name
   return num1 + num2 + num3;
 }
 
@@ -153,6 +195,8 @@ function stringFunctions(value) {
   console.log(`.startsWith('Hello') - ${value.startsWith("Hello")}`);
   console.log(`.indexOf('Hello') - ${value.indexOf("Hello")}`);
 
+  console.log(`.split(value, ' ') - ${value.split("")}`)
+  console.table(value.split(" "))
   /*
     Other Methods
         - split(string)
@@ -163,3 +207,56 @@ function stringFunctions(value) {
         - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String
     */
 }
+   /*
+   ###############################
+   Array Manipulation Functions
+   ###############################
+    */
+   function arrayFunctions() {
+   // define a JavaScript array
+
+   let stooges = [
+   "Moe",
+   "Larry",
+   "Curly"
+   ]
+   console.table(stooges) // Display array as a formatted display
+
+// JavaScript array is like a list in C# or ArrayList in Java
+stooges.unshift("Curly Joe") // Add an element to the start of the array
+stooges.push("Shemp") // Add an element to the end of the array
+
+// To splice into an array: splice(start-index, 0, "new-elements")
+stooges.splice(3,0, "Groucho", "Chico", "Harpo")// insert elements starting index 3
+console.table(stooges)
+
+// To delete elements in an array: splice(start-index, #-elems-to- delete)
+
+stooges.splice(3,1)     // insert elements starting index 3
+console.table(stooges)  // Display array as formatted display
+
+
+stooges.splice(3,2)     // delete two elements at index 3
+console.table(stooges)  // Display array as formatted display
+
+//shift() will remove the first element in the array and return it
+//splice(0,1) will remove the first element in the array and return it 
+stooges.shift()         // Delete the first element and return
+console.table(stooges)  // Display array as formatted display
+
+stooges.pop()           // delete the last method and return it.
+console.table(stooges)  // Display array as formatted display
+
+let marxBros = [
+  "Groucho",
+  "Chico",
+  "Harpo",
+]
+let oldFunnyGuys = stooges.concat(marxBros);
+console.table(oldFunnyGuys);
+}
+
+   
+   
+   
+ 
