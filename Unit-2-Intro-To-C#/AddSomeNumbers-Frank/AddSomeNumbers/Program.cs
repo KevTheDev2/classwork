@@ -46,7 +46,7 @@ class Program
         //              go back to #2
         //          c.  if false - exit the loop after the closing brace }
 
-        for (int i=0; i < 5; i++) // i=0, 1, 2 inside the loop - 3 causes it to exit
+        for (int i=0; i < 5; i++) // i=0, 1, 2 inside the loop - 5 causes it to exit
         {
             // Ask the user to enter a number
             Console.WriteLine("Please enter a number: ");

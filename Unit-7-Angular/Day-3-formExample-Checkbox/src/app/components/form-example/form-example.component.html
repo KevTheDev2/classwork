@@ -31,7 +31,7 @@
         <input type="text" id="lnamefield" name="lname" [(ngModel)]="lastName"/>
     </div>
     <!-- type="date" generates a basic date picker on the page -->
-    <div>""
+    <div>
         <label for="bdate"> Birth Date:</label>
         <input type="date" id="bdate" name="birthDate" [(ngModel)]="birthday"/>
     </div>
@@ -77,27 +77,29 @@
         <!-- the value="" is what gets stored in te variable holding the choices    -->
         <!-- the values are stored as a group under the name="" variable            -->
         <!--    (next week will know this as an array)                              -->
+        <!-- We have to generate one element in the HTML for each element 
+         in the array of checkbox values-->
         <p>Do you like any sports?</p>
-        <input type="checkbox" id="football" name="preferredSports" value="Football" [(ngModel)]="sports">
-        <label for="football">American Football</label>
-        <br>
-        <input type="checkbox" id="soccer"   name="preferredSports" value="soccer" [(ngModel)]="sports">
-        <label for="soccer">European Football</label>
-        <br>
-        <input type="checkbox" id="baseball" name="preferredSports" value="baseball" [(ngModel)]="sports">
-        <label for="baseball">Baseball</label>
-        <br>
-        <input type="checkbox"  id="basketball" name="preferredSports" value="basketball" [(ngModel)]="sports">
-        <label for="basketball">Basketball</label>
-        <br>
-        <input type="checkbox" id="cricket" name="preferredSports" value="cricket" [(ngModel)]="sports">
-        <label for="cricket">Cricket</label>
-        <br>
-        <input type="checkbox" id="hockey" name="preferredSports" value="hockey" [(ngModel)]="sports">
-        <label for="hockey">Hockey</label>
-        <br>
-        <input type="checkbox" id="other" name="preferredSports" value="some-other-sport" [(ngModel)]="sports">
-        <label for="other">Other Sport</label>
+        <!-- *ngFor willprocess all the elements in Typescropt array-->
+        <!-- We will genrate a <div> for each element in the checkbos array-->
+        <!-- *ngFoe wors like a forEach in C# or Java-->   
+        <!-- ngFpe is specified as an attribute on any html element--> 
+        <!-- *ngFor="let-name-of element of arrays assign each element to given name"-->
+        <div *ngFor="let aCheckbox of sports">
+        <!-- a checkbox automatically has a boolean property called checked -->
+        <!-- the checked propery is set to true if box is checked/false if not-->
+        <!-- Each checkbox on the page isconnected to a specific element in the array-->
+        <!-- [value] sets the value for the checkbox (the value property of array element)-->
+        
+        <input type="checkbox"
+        [(ngModel)] = "aCheckbox.checked"
+        [value] = "aCheckbox.value" 
+        [ngModelOptions] ="{standalone: true}"
+        />
+        <span>{{aCheckbox.name}}</span>
+        </div>
+
+
     </div>
     <div>
         <br>  
