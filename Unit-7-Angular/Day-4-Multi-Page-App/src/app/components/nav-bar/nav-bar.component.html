@@ -4,7 +4,21 @@
         <!-- here we are specifing the URL path for the link            -->
         <!-- when a link is clicked the path in the href= will be added -->
         <!--      to the server-name:port in the URL                    -->   
-        <a href="/home">Home</a>        
+        <!-- Agular uses yhe router to determine which componrnt should be 
+               rendered  for the URL path in the link-->
+        <!-- a <router-outlet> tag must be included in the component containing the link-->
+        <!-- in this application the app.component.html, containing the link-->
+        <!-- usually that is the component included in the nav-bar -->
+
+        <!-- The URl path must be associated with the Angular component -->
+         <!-- in the app.routes-->
+        <a href="/home">Home</a> 
+        &nbsp;
+        <a href="/whatever">Enter Contact Info</a>       
+        &nbsp;
+        <a href="/seals">State Seals</a>
+        &nbsp;
+        <a href="/student-list">Show the list of Students</a>
     </div>
 </nav>
    
