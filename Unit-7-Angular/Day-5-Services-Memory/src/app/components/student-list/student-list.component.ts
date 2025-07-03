@@ -1,8 +1,8 @@
 import { CommonModule }   from '@angular/common';
 import { Component }      from '@angular/core';
-import { StudentInfo }    from '../../interfaces/studentInfo';
-import { StudentService } from '../../services/student.service.memory';
-import { RouterLink } from '@angular/router';
+import { StudentInfo }    from '../../interfaces/studentInfo'; // Give me access to the StudentInfo interface
+import { StudentService } from '../../services/student.service.memory'; // Give me access to student.services.memory stuff
+import { RouterLink } from '@angular/router'; 
 
 @Component({
   selector: 'student-list',

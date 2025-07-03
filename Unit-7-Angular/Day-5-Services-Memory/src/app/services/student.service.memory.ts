@@ -1,5 +1,12 @@
+
+
+
 /***************************************************************
  This is service
+
+ It was initially created using: ng generate service/ service/student
+ (ng will be added automatically added .service)
+ (the emety was added)
 
  A service is a set of processing to facilitate the retrieval
  and storage of data - typically in a persistent source (saved)
@@ -10,6 +17,11 @@
 
  The data from this service is just an array in memory
 
+ to make a service Deoendency Injectables
+    1. Imort Injectable Inject Core features
+    2. Include the @Injectable object with providedIn property set too 'root'
+
+ If you have angular generate thr severcies, it does both of those things for o     
 *******************************************************************/
 
 import { Injectable}   from '@angular/core';              // Access Angular Dependency Injection
@@ -21,7 +33,9 @@ import { StudentInfo } from '../interfaces/studentInfo';  // Using the StudentIn
 export class StudentService {
 
  // A module contains data and methods/functions for processing that data
- 
+
+   //  A module (Class equivalent for angular) containds data  and methods/functions for processing that data
+   // Source of data calls to retrieve the data - initialized in the code
    // Source of data for calls to retrieve the data - initialized in the code
    private listOfStudents : StudentInfo[] = []  // An array of StudentInfo objects
  
