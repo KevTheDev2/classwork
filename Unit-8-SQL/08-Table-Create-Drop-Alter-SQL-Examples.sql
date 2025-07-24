@@ -2,6 +2,8 @@
 --
 -- DROP - remove a table and all it's data from the database
 --
+-- DROP is permanent - THERE IS NO WAY FOR YOU TO GET THAT TABLE AND ITS DATA BACK
+--
 -- Consider referential constraints - cannot drop a parent if it has dependents
 --
 --      DROP TABLE table-name             - Will fail if table does not exist or if it has dependents
@@ -14,10 +16,10 @@
 --  CREATE - define a table to the database manager
 --
 --       CREATE TABLE table-name
---       (column-name     data-type    NOT NULL,
---        column-name     data-type,
---        column-name     data-type    DEFAULT   default-value,
---        column-name     data-type    UNIQUE,
+--       (column-name     data-type    NOT NULL, -- Value required column
+--        column-name     data-type,			 -- Value optional column	
+--        column-name     data-type    DEFAULT   default-value, -- if value is missing on insert use default value
+--        column-name     data-type    UNIQUE,					-- value in column muse be UNIQUE
 --        CONSTRAINT constraint-name PRIMARY KEY (column(s)-in-table),
 --        CONSTRAINT constraint-name FOREIGN KEY(for-key-column(s)) REFERENCES parent-table(pri-key-column(s)),
 --        CONSTRAINT constraint-name  CHECK (where-predicate)
@@ -64,4 +66,58 @@
 --      ALTER TABLE IF EXISTS table-name RENAME TO new-table-name  - Successful if table exists or not
 --
 ---------------------------------------------------------------------------------------------------------------
+--
 
+-- Dependents had to be dropped before parents
+
+drop table if exists pet_types 		CASCADE;
+drop table if exists owner 			cascade; 		-- parent
+drop table if exists pet			cascade;		-- parent
+
+
+
+
+
+
+--
+-- Create the Pet_Types table
+-- (Parent Table to pet -Parents must be created before dependents)
+
+CREATE TABLE pet_types
+(-- column-name			data-type		nullness
+	pet_type_id			serial   		not null, -- serial tells postgres to automatically generate a unique integer value
+	name				char(15) 		not null, -- char is fixed sized - specify the fixed actual size
+	species 			varchar(50) 	not null, -- varchar is variable sizes and you specify the max size
+	CONSTRAINT pk_pet_type_id PRIMARY KEY (pet_type_id)
+)
+;
+
+CREATE TABLE owner
+(
+
+	owner_id		serial 		  not null,
+	last_name		varchar(50)   not null,
+	first_name		varchar(50)   not null,
+	address			varchar(100),   
+	city 			varchar(20),
+	state 			char(2),
+	CONSTRAINT pk_owner_id PRIMARY KEY (owner_id)
+	
+
+)
+;
+
+create table pet 
+(
+pet_id 			serial  			not null,
+name 			varchar(250)		not null,
+pet_type_id 	integer				not null,
+owner_id		integer				not null,
+CONSTRAINT pk_id PRIMARY KEY (pet_id),
+CONSTRAINT fk_pet_type_id FOREIGN KEY(pet_type_id) 
+	REFERENCES pet_types(pet_type_id),
+CONSTRAINT fk_owner_id FOREIGN KEY(owner_id) 
+	REFERENCES owner (owner_id)
+
+)
+;

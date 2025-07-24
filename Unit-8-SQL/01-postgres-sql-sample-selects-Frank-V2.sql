@@ -25,6 +25,19 @@
 --        IN(list-of-values)      -- alterative to a series of = OR
 --        NOT IN(list-of-values)  -- alterative to a series of != AND
 --        BETWEEN value AND value
+--
+--		Null is relational data/SQL means unknown (I don't know value)
+--		Null require special treatment in SQL
+--		Cannot use any condiional operators on a null value
+--			column =  null is not valid
+--			column <  null is not valid
+--			column != null is not valid
+--
+--			any operation with a null is null
+--
+--			when sorting, all null values are sorted together
+--
+--
 --        IS NULL          -- special predicate for checking to see if column is null 
 --        IS NOT NULL      -- special predicate for checking to see if column is not null 
 --        LIKE    (use wildcards: % means 0 to any number of any characters
@@ -183,7 +196,52 @@ select gambler_name as Name
  where (monthly_salary * 12) > 500000  -- only include those with Annual Salary > 500000
 order by Annual_Salary desc 
 ;
+--
+-- Show everyones name and address in alphabetical order
+--
 
+select gambler_name, address
+from gambler
+order by address Desc
+;
 
+--
+-- Show everyones name and address in alphabetical order
+-- only if the address is known
 
+select gambler_name, address
+	from gambler
+where address is not null
+order by address Desc
+;
 
+--
+-- Show everyones name and address in alphabetical order
+-- only if the address is known
+
+select gambler_name, address
+	from gambler
+where address is null
+order by address Desc
+;
+--
+-- Show me gamblers with d in the name
+--
+--
+select gambler_name -- column from
+	from gambler 	-- table from
+where gambler_name like '%d%'	-- case sensitive for only lowercase 'd' -- rows you want to see
+;
+--select gambler_name
+--	from gambler 
+--where gambler_name ilike '%d%'	-- case insensitive like search for upper or lowercase, i stands for insensitive
+--
+-- show me casino names in host table
+--
+select casino_name
+from host
+; 
+
+select distinct casino_name
+	from host
+;

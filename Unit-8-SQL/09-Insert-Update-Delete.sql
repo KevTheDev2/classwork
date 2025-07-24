@@ -89,9 +89,63 @@
 ---------------------------------------------------------------------------------------------------------------------------------------
 -- INSERT
 --
+delete from pet_types; -- delete all existing rows from the table
+					   -- 	only do this is you want yo empty the table!		
 
 
+INSERT into pet_types
+		(name, species)
+		values ('Xolo', 'Dog');
+		
+		INSERT into pet_types
+		(name, species)
+		values ('Great Dane', 'Dog');
+		
+		INSERT into pet_types
+		(name, species)
+		values ('Dalmation', 'Dog');
+		
+		INSERT into pet_types
+		(name, species)
+		values ('German Shepard', 'Dog');
 
+		-- if you omit column names all non-null column values must be specified
+		-- If table has auto-generated you must provide a value for auto-generated columns
+		-- (which you don't want to do since you want the DBMS to genrate the value)
+
+INSERT into pet_types
+		(species, name)
+		values ('Cat', 'Burmese');
+
+		INSERT into pet_types
+		(species, name)
+		values ('Cat', 'Sphinx');
+
+		INSERT into pet_types
+		(species, name)
+		values ('Cat', 'Siamese');
+		
+		
+select * from pet_types;
+
+--
+--
+-- Insert some rows into owner table
+-- Owner is parent table to pet
+-- so we must load with data before pet
+--
+-- last_name 		first_name   		address  			city 			state
+-- Fella			Frank									Phoenix			AZ
+-- Corleone			Vito													NY
+-- Gibbs			Kevin									Detroit			MI
+delete from owner;
+insert into owner
+(first_name, last_name, city, state)
+Values('Frank', 'Fella', 'Phoenix', 'AZ'),
+	  ('Vito', 'Corelone', null , 'NY'),
+	  ('Kevin', 'Gibbs II', 'Detroit', 'MI')
+;
+ select * from owner
 -- UPDATE
 
 
