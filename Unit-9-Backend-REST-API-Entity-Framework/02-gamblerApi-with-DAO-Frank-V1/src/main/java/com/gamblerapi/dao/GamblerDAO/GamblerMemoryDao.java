@@ -10,6 +10,9 @@ public class GamblerMemoryDao {
      *  GamblerDAO Starter Code
      *  
      *  DAO - Data Access Object - Used to Manipulate data in a data source
+     *
+     *  DAO works with objects - receive and return objects
+     *                          unless specific search values
      **************************************************************************/
 
     // Data Source
@@ -28,6 +31,8 @@ public class GamblerMemoryDao {
         gamblers.add(new Gambler(382, "Stickman Nelson", "Cumberland, MD" , 12983.75,   "10/21/1955"));
         gamblers.add(new Gambler(572, "Al Mostbroke"   , "Clayton MO"     , 4505.55,    "01/18/1975"));
     }
+
+    // Methods are called by the controller to get data based on the request that is receives.
 
     // Method to return all entries in the data source
     public List<Gambler> getGamblers()
@@ -55,18 +60,50 @@ public class GamblerMemoryDao {
     } // End of getGamblerById() method
 
     // Method to retrieve a gambler by name
-    public Gambler getGamblerByName(String name) {
+    public List<Gambler> getGamblerByName(String name) {
+        List<Gambler> theGamblers = new ArrayList<Gambler>();
         // Loop through the data source to find the gambler with the given name
         for (Gambler aGambler : gamblers) {
             // Check if the current gambler's name matches the given name
             // Use equalsIgnoreCase to compare names without case sensitivity
             // Note use of getter for current gambler's name
-            if (aGambler.getName().equalsIgnoreCase(name)) {
-                return aGambler; // Return the gambler if found
+            if (aGambler.getName().toLowerCase().contains(name.toLowerCase())) {
+                theGamblers.add(aGambler);
             }
         }
         // Return null if no gambler with the given name is found
-        return null;
+        return theGamblers;
     } // End of getGamblerByName() method
+
+    public Gambler addGambler(Gambler aGambler)
+    {
+
+        try {
+            gamblers.add(aGambler);
+        }
+        catch (Exception anException) {
+
+            return null;
+        }
+        return aGambler;
+    }
+
+    public Gambler updateGambler(Gambler updateGambler) {
+
+        Gambler existingGambler = getGamblerById(updateGambler.getId());
+
+        gamblers.remove(existingGambler);
+
+        gamblers.add(updateGambler);
+
+        return updateGambler;
+    }
+
+    public void zapAGambler (int gamblerId) {
+        Gambler existingGambler = getGamblerById(gamblerId);
+        gamblers.remove(existingGambler);
+    }
+
+
 
 }  // end of GamblerMemoryDao class

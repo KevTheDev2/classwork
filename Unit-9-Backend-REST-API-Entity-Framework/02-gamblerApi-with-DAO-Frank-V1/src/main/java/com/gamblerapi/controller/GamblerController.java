@@ -10,10 +10,7 @@ package com.gamblerapi.controller;
 
 import com.gamblerapi.dao.GamblerDAO.GamblerMemoryDao;
 import com.gamblerapi.model.Gambler;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -26,20 +23,26 @@ import java.util.List;
 
 @RestController // This annotation indicates that this class
                     //     contains REST a controller methods
-                    // REST stands for REpresentational State Transfer
+                    // REST stands for Representational State Transfer
                     //      REST` is an architectural style for designing
                     //            networked applications
                     //      REST is protocol for communication between client and server
-                    //           All request and repsonses follow a standard format
+                    //           All request and responses follow a standard format
 public class GamblerController {
     // This is where you will define your controller methods
     // Controller methods are the methods that handle HTTP requests
     // They are annotated with @GetMapping, @PostMapping, @PutMapping, @DeleteMapping, etc.
 
+    // Usually controller methods aren't very big and have no logic except for error habdling
+    // A typical controller
+    //
+     // 1. Receives a request
+    //  2. Retrieves parameters passed in the URL (path variables or query parameters.
+
     // Data members for a class are defined outside any class (at the top)
     //    so all methods in the class can access them
 
-    // Define a reference to the GamblerDAO
+    // Define a reference to the GamblerDAO so we can use it's methods to get data
     private GamblerMemoryDao gamblerDao;
 
     // Constructor to initialize the GamblerDAO
@@ -121,10 +124,25 @@ public class GamblerController {
     // The @RequestParam annotation tells the server to
     //      extract the value of the query parameter "name"
     // For now, the name of the parameter in the method must match the name of the query parameter
-    public Gambler getGamblerByName(@RequestParam String name) {
+    public List<Gambler> getGamblerByName(@RequestParam String name) {
         // Call the DAO method to get the gambler by name
         //   and return the gambler it gives us
         return gamblerDao.getGamblerByName(name);
     } // End of getGamblerByName() method
 
+    @PostMapping("/gamblers")
+    public Gambler addToDataSource(@RequestBody Gambler newGambler) {
+
+        return gamblerDao.addGambler(newGambler);
+    }
+
+    @PutMapping("/gamblers")
+    public Gambler updateAObject(@RequestBody Gambler updatedGambler) {
+        return gamblerDao.updateGambler(updatedGambler);
+    }
+
+    @DeleteMapping("/gamblers/{id}")
+    public void removeAGambler(@PathVariable int id) {
+        gamblerDao.zapAGambler(id);
+    }
 }  // End of GamblerController class
