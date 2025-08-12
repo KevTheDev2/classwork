@@ -4,8 +4,8 @@ import jakarta.persistence.*;
 
 import java.util.Objects;
 
-@Entity
-@Table(name = "pet")
+@Entity // Tells the data framework this is something it cares about
+@Table(name = "pet") // Tells the data framework the table this POJO represents
 public class Pet {
 
     // Data members - one for each column in the table
@@ -25,9 +25,9 @@ public class Pet {
 
     // Constructors
 
-    // Program defined default constructor - in case Java/Framework needs it
+            // Program defined default constructor - in case Java/Framework needs it
 
-    public  Pet(){}
+    public  Pet(){};
 
     public Pet(int petId, String petName, int petTypeID, int ownerId) {
         this.petId = petId;
@@ -93,4 +93,4 @@ public class Pet {
     // Additional methods to support the class
 
 
-} // end of put POJO
+} // end of pet POJO
